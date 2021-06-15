@@ -1,0 +1,16 @@
+:root{
+  --white: #fdfffc;
+  --black: #0d1117;
+  --red: #8d0801;
+  --gray: #313131;
+}
+html{
+  font-size: 62.5%;
+  font-family: sans-serif;
+  background-color: var(--white);
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

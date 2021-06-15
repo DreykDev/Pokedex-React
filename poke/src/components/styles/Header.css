@@ -1,0 +1,46 @@
+header{
+  background-color: var(--black);
+  /* display: flex;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 20% 80% ;
+  width: 100vw;
+  height: auto;
+  padding: 1rem;
+}
+.container__logo{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.logoPokemon{
+  width: 100%;
+  max-width: 26rem;
+  align-self: center;
+}
+.container__social{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.2rem;
+}
+.logoGithub{
+  width: 6%;
+  height: 70%;
+  align-self: center;
+}
+.logoInstagram{
+  width: 6%;
+  height: 70%;
+  align-self: center;
+}
+.logoTiktok{
+  width: 6%;
+  height: 70%;
+  align-self: center;
+}
+.logoTwitter{
+  width: 6%;
+  height: 70%;
+  align-self: center;
+}
