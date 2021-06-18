@@ -2,11 +2,11 @@ import React from 'react';
 // import getHash from '../utils/getHash'
 // import getData from '../utils/getData'
 
-
+const hash = window.location
 class PokemonCard extends React.Component {
   state = {
     data: {
-      id: 1,
+      id: window.location.pathname,
       pokemon: []
     }
   };
@@ -16,7 +16,7 @@ class PokemonCard extends React.Component {
   }
 
   fetchCharacters = async () => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${this.state.data.id}/`)
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon${this.state.data.id}/`)
     const data = await response.json()
 
     // Copio los datos de los pokemon que tenga state
@@ -36,6 +36,7 @@ class PokemonCard extends React.Component {
   render() {
     return (
       <div className="Characters">
+      {console.log(hash)}
         {/* {console.log(this.state.stats)} */}
         <ul className="Characters-item">
           {this.state.data.pokemon.map(character => (

@@ -4,7 +4,6 @@ class Home extends React.Component {
   state = {
     data: {
       results: [{
-        name: {}
       }],
     }
   }
@@ -33,9 +32,9 @@ class Home extends React.Component {
       <div className="Characters">
 
         {this.state.data.results.map((pokemon,index)=>(
-          <Link to={`/pokemon/${pokemon.name}`}>
+          <Link to={`/${pokemon.name}`}>
             <img src={`https://pokeres.bastionbot.org/images/pokemon/${index+1}.png`} alt={pokemon.name} />
-            <h2>${pokemon.name}</h2>
+            <h2>{pokemon.name}</h2>
           </Link>
         ))}
       </div>
