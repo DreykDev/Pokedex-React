@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Header from './Header'
 import Home from '../pages/Home'
+import PokemonCard from './PokemonCard'
 
 const App = () => {
   return(
@@ -10,6 +11,7 @@ const App = () => {
       <Header/>
       <Switch>
         <Route exact path='/' component={Home}/>
+        <Route exact path='/pokemon/:id' component={PokemonCard}/>
       </Switch>
     </BrowserRouter>
   )
