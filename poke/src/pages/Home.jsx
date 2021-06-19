@@ -6,21 +6,29 @@ import PageError from '../components/PageError'
 import PageLoading from '../components/PageLoading'
 
 class Home extends React.Component {
-  state = {
-    loading: true,
-    error: null,
-    data: {
-      results: [{
-      }],
+  constructor(props) {
+    super(props);
+    this.state = {
+      nextPage1: 0,
+      nextPage2: 20,
+      loading: true,
+      error: null,
+      search: '',
+      data: {
+        results: [{
+        }],
+      }
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount(){
     this.fetchCharacters()
   }
 
-  fetchCharacters = async (id) => {
-    const apiURL = id ? `https://pokeapi.co/api/v2/pokemon/${id}` : `https://pokeapi.co/api/v2/pokemon/?limit=24&offset=0`;
+  fetchCharacters = async () => {
+    const apiURL = `https://pokeapi.co/api/v2/pokemon/?offset=${this.state.nextPage1}&limit=${this.state.nextPage2}`;
 
     try {
       const responseUrl = await fetch(apiURL)
@@ -29,10 +37,20 @@ class Home extends React.Component {
       this.setState({
         loading: false,
         data:dataUrl,
+        nextPage2: this.state.nextPage2 + 20,
       })
     } catch (error) {
       this.setState({loading: false, error: error})
     }
+  }
+
+  handleChange= e => {
+    this.setState({
+      search: e.target.value,
+    })
+  }
+  handleSubmit = e => {
+    e.preventDefault();
   }
 
   render() {
@@ -43,8 +61,24 @@ class Home extends React.Component {
       return <PageError error={this.state.error}/>
     }
     return (
-      <div className="Characters">
-
+      <div className="Home">
+        <div className="search__container">
+          <form onSubmit={this.handleSubmit}>
+            <div className="form__input">
+              <input
+                onChange={this.handleChange}
+                placeholder="charmander"
+                type="text"
+                value={this.state.search}
+              />
+            </div>
+            {/* <button onClick={this.handleClick} >Search</button> */}
+            <Link to={`/${this.state.search}`}>
+              <p className="button">Search</p>
+            </Link>
+          </form>
+        </div>
+        <div className="Characters">
         {this.state.data.results.map((pokemon,index)=>(
           <div className="Characters-item">
             <Link to={`/${pokemon.name}`}>
@@ -53,7 +87,10 @@ class Home extends React.Component {
           </Link>
           </div>
         ))}
-
+        </div>
+        {!this.state.loading && (
+          <button className="button" onClick={()=>this.fetchCharacters()} >Load More</button>
+        )}
       </div>
     );
   }

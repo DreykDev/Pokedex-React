@@ -1,3 +1,32 @@
+.Home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.search__container{
+  margin: 4rem 0 2rem 0;
+}
+.search__container form{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.form__input input{
+  font-size: 2rem;
+  padding: 0.5rem;
+  height: 38px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: rgb(236, 234, 234);
+  outline: none;
+}
+.button{
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  background-color: #ee6b2f;
+  color: var(--black);
+}
 .Characters{
   display: flex;
   flex-wrap: wrap;
@@ -43,5 +72,19 @@
   }
   .Characters-item a h2{
     font-size: 2.5rem;
+  }
+}
+@media only screen and (min-width: 560px) {
+  .button{
+    border-radius: 20px;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+  .form__input input{
+    font-size: 3rem;
+    padding: 0.5rem;
+    height: 50px;
+    border: 0px;
+    border-radius: 5px;
   }
 }
