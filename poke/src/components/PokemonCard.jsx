@@ -1,11 +1,13 @@
 import React from 'react';
-// import getHash from '../utils/getHash'
-// import getData from '../utils/getData'
+import './styles/PokemonCard.css'
 
-const hash = window.location
+import PageError from '../components/PageError'
+import PageLoading from '../components/PageLoading'
 class PokemonCard extends React.Component {
   state = {
+    error: null,
     data: {
+      loading: true,
       id: window.location.pathname,
       pokemon: []
     }
@@ -16,43 +18,82 @@ class PokemonCard extends React.Component {
   }
 
   fetchCharacters = async () => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon${this.state.data.id}/`)
-    const data = await response.json()
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon${this.state.data.id}/`)
+      const data = await response.json()
 
-    // Copio los datos de los pokemon que tenga state
-    let pokemonState = this.state.data.pokemon;
-    // Agrego el nuevo pokemon de esta peticion
-    pokemonState.push(data);
+      let pokemonState = this.state.data.pokemon;
+      pokemonState.push(data);
 
-    // Actualizo el state
-    this.setState({
-      data: {
-        id: this.state.data.id,
-        pokemon: pokemonState
-      }
-    })
+      this.setState({
+        data: {
+          loading: false,
+          id: this.state.data.id,
+          pokemon: pokemonState,
+        }
+      })
+    } catch (error) {
+      this.setState({loading: false, error: error})
+    }
   }
 
   render() {
+
+    if (this.state.data.loading){
+      return <PageLoading/>
+    }
+    if (this.state.error){
+      return <PageError error={this.state.error}/>
+    }
+
     return (
-      <div className="Characters">
-      {console.log(hash)}
-        {/* {console.log(this.state.stats)} */}
-        <ul className="Characters-item">
-          {this.state.data.pokemon.map(character => (
-            // Muestro la lista de this.state.pokemon
-            <li key={character.name}>
-              <h4>Nombre: {character.name}</h4>
-              <p>Weight: {character.weight}</p>
-              <p>Experience: {character.base_experience}</p>
-              <ul>Abilities:
-              {
-                  // Las habilidades es otro array dentro de this.state.pokemon.abilities
-                  character.abilities.map(abPokemon => (
-                    <li key={abPokemon.slot}><span>&nbsp;&nbsp;--></span> { abPokemon.ability.name}</li>
-                  ))
-              }
-              </ul>
+      <div>
+        <ul className="Characters-inner">
+          {this.state.data.pokemon.map((character) => (
+            <li className="primary__li" key={character.name}>
+              <article className="Characters-card_img">
+                  <h2>{character.name}</h2>
+                  <img src={`https://pokeres.bastionbot.org/images/pokemon/${character.id}.png`} alt="h" />
+              </article>
+
+              <article  className="Characters-card_stats">
+                <h3 className="Titulo-h3">Types:</h3>
+                <ul className="Tipos">
+                  {character.types.map( type => (
+                    <li>
+                    {''+ type.type.name +''}
+                    </li>
+                  ))}
+                </ul>
+
+                <h3 className="Titulo-h3">Abilities:</h3>
+                <ul className="Habilidades">
+                  {
+                    character.abilities.map(ability => (
+                      <li key={ability.slot}>
+                      { ability.ability.name} {ability.is_hidden ? '(Oculta)':''}
+                      </li>
+                    ))
+                  }
+                </ul>
+
+                <h3 className="Titulo-h3">Estadísticas base:</h3>
+                <ul className="StatsBase">
+                  {
+                    character.stats.map(
+                        stat => (
+                          <li>
+                          {stat.stat.name}: {stat.base_stat}
+                          </li>
+                        )
+                    )
+                  }
+                </ul>
+
+                <p>Peso: {character.weight/10} Kg.</p>
+                <p>Altura: {character.height/10} m.</p>
+
+              </article>
             </li>
           ))}
         </ul>

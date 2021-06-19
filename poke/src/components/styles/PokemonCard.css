@@ -1,0 +1,49 @@
+.Characters-inner{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.Characters-inner .primary__li{
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.Characters-card_img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgb(236, 234, 234);
+  padding: 1.2rem 0.8rem 0.8rem 0.8rem;
+  border-radius: 1rem;
+  overflow-x: hidden;
+}
+.Characters-card_img h2{
+  font-size: 2rem;
+  color: var(--black);
+}
+.Characters-card_img img{
+  width: 99%;
+}
+.Characters-card_stats{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.Characters-card_stats .Titulo-h3{
+  font-size: 1.8rem;
+  color: var(--black);
+}
+.Tipos,
+.Habilidades,
+.StatsBase{
+  list-style: none;
+  font-size: 1.3rem;
+}
+.Characters-card_stats p{
+  font-size: 1.3rem;
+}

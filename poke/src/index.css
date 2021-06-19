@@ -13,4 +13,45 @@ html{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+}
+a{
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 480px) {
+  .Characters{
+    gap: 2rem;
+    justify-content: space-evenly;
+  }
+  .Characters-item{
+    width: 22%;
+  }
+  .Characters-item a h2{
+    font-size: 2.5rem;
+  }
+  .Characters-inner .primary__li{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+  }
+  .Characters-card_img{
+    width: 40%;
+  }
+  .Characters-card_img h2{
+    font-size: 3rem;
+  }
+  .Characters-card_stats .Titulo-h3{
+    font-size: 2rem;
+  }
+  .Tipos,
+  .Habilidades,
+  .StatsBase{
+    font-size: 1.5rem;
+  }
+  .Characters-card_stats p{
+    font-size: 1.5rem;
+  }
 }

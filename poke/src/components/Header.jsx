@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './styles/Header.css'
 
 import logoPokemon from '../images/logoPokemon.png'
@@ -13,14 +14,24 @@ class Header extends React.Component {
     return (
       <header>
         <div className="container__logo">
-          <img className="logoPokemon" src={logoPokemon} alt="Logo de Pokemon" />
+          <Link to="/">
+            <img className="logoPokemon" src={logoPokemon} alt="Logo de Pokemon" />
+          </Link>
         </div>
 
         <div className="container__social">
-          <img className="logoGithub" src={logoGithub} alt="Logo de Github" />
-          <img className="logoInstagram" src={logoInstagram} alt="Logo de Instagram" />
-          <img className="logoTiktok" src={logoTiktok} alt="Logo de Tiktok" />
-          <img className="logoTwitter" src={logoTwitter} alt="Logo do Twitter" />
+          <Link>
+            <img className="logoGithub" src={logoGithub} alt="Logo de Github" />
+          </Link>
+          <Link>
+            <img className="logoInstagram" src={logoInstagram} alt="Logo de Instagram" />
+          </Link>
+          <Link>
+            <img className="logoTiktok" src={logoTiktok} alt="Logo de Tiktok" />
+          </Link>
+          <Link>
+            <img className="logoTwitter" src={logoTwitter} alt="Logo do Twitter" />
+          </Link>
         </div>
 
       </header>
