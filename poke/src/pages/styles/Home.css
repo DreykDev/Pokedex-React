@@ -11,6 +11,10 @@
   gap: 1rem;
   align-items: center;
 }
+.form{
+  display: flex;
+  align-items: center;
+}
 .form__input input{
   font-size: 2rem;
   padding: 0.5rem;
@@ -21,11 +25,21 @@
   outline: none;
 }
 .button{
+  border: none;
   border-radius: 10px;
   padding: 0.5rem;
   font-size: 1.6rem;
   background-color: #ee6b2f;
   color: var(--black);
+}
+.buttonS{
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  background-color: #ee6b2f;
+  color: var(--black);
+  margin-bottom: 1.5rem;
 }
 .Characters{
   display: flex;

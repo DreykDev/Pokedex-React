@@ -1,0 +1,42 @@
+.footer__container {
+  height: 7vh;
+  background-color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer {
+  width: 80%;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2rem;
+  color: var(--white);
+}
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+@media only screen and (min-width: 480px) {
+  .footer {
+    width: 56%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .footer {
+    width: 43%;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .footer {
+    width: 19%;
+  }
+}

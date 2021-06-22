@@ -63,7 +63,7 @@ class Home extends React.Component {
     return (
       <div className="Home">
         <div className="search__container">
-          <form onSubmit={this.handleSubmit}>
+          <form className="form" onSubmit={this.handleSubmit}>
             <div className="form__input">
               <input
                 onChange={this.handleChange}
@@ -73,11 +73,12 @@ class Home extends React.Component {
               />
             </div>
             {/* <button onClick={this.handleClick} >Search</button> */}
-            <Link to={`/${this.state.search}`}>
+            <Link className="container__button" to={`/${this.state.search}`}>
               <p className="button">Search</p>
             </Link>
           </form>
         </div>
+
         <div className="Characters">
         {this.state.data.results.map((pokemon,index)=>(
           <div className="Characters-item">
@@ -89,7 +90,7 @@ class Home extends React.Component {
         ))}
         </div>
         {!this.state.loading && (
-          <button className="button" onClick={()=>this.fetchCharacters()} >Load More</button>
+          <button className="buttonS" onClick={()=>this.fetchCharacters()} >Load More</button>
         )}
       </div>
     );

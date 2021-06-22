@@ -20,18 +20,18 @@ class Header extends React.Component {
         </div>
 
         <div className="container__social">
-          <Link>
+          <a href="https://github.com/CodeDreake/Pokedex-React">
             <img className="logoGithub" src={logoGithub} alt="Logo de Github" />
-          </Link>
-          <Link>
+          </a>
+          <a href="https://www.instagram.com/oatad59/">
             <img className="logoInstagram" src={logoInstagram} alt="Logo de Instagram" />
-          </Link>
-          <Link>
+          </a>
+          <a href="https://www.tiktok.com/@el_david_v?">
             <img className="logoTiktok" src={logoTiktok} alt="Logo de Tiktok" />
-          </Link>
-          <Link>
+          </a>
+          <a href="https://twitter.com/ValenciDev">
             <img className="logoTwitter" src={logoTwitter} alt="Logo do Twitter" />
-          </Link>
+          </a>
         </div>
 
       </header>
